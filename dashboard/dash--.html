@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .chart-container {
+            width: 50%;
+            margin-top: 10px;
+            border-radius: 15px;
+            /* Menambahkan lengkungan pada sudut kontainer */
+            overflow: hidden;
+            /* Agar isi kontainer menyesuaikan dengan border-radius */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Tambahkan bayangan agar lebih terlihat */
+            background-color: #dedddd;
+            /* Tambahkan warna latar belakang jika diperlukan */
+        }
+
+        .chart-container- {
+            width: 65%;
+            margin-top: 20px;
+        }
+
+        .chart-title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .comments-section {
+            width: 50%;
+            margin-top: 30px;
+        }
+
+        .comments-section h3 {
+            text-align: center;
+        }
+
+        .comments-section form {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .comments-section textarea {
+            width: 96.5%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            resize: none;
+            height: 100px;
+        }
+
+        .comments-section button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .comments-section button:hover {
+            background-color: #45a049;
+        }
+
+        .comments-display {
+            margin-top: 20px;
+            padding: 50px;
+            background-color: #868585;
+            border: 1px solid #383737;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .comment {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chart-container">
+        <div class="chart-title">Diagram Progres Keahlian</div>
+        <canvas id="learningProgress"></canvas>
+    </div>
+
+    <div class="chart-container-">
+        <div class="chart-title">Statistik Pengunjung dan Komentar</div>
+        <canvas id="visitorsComments"></canvas>
+    </div>
+
+    <div class="comments-section">
+        <h3>Kolom Komentar</h3>
+        <form id="commentForm">
+            <textarea id="commentInput" placeholder="Tulis komentar Anda di sini..." required></textarea>
+            <button type="submit">Kirim Komentar</button>
+        </form>
+        <div class="comments-display" id="commentsDisplay"></div>
+    </div>
+
+    <script>
+        // Data untuk diagram lingkaran progres pembelajaran
+        const progressData = {
+            labels: ['Semester 1 (HTML Basics)', 'Semester 2 (CSS Styling)', 'Semester 3 (JavaScript Basics)', 'Semester 4 (Phyton)', 'Semester 5 (Development)'],
+            datasets: [{
+                label: 'Progress',
+                data: [60, 40, 40, 60, 20],
+                backgroundColor: ['#ff5722', '#03a9f4', '#4caf50', '#ff9800', '#9c27b0'],
+            }]
+        };
+
+        // Opsi untuk diagram lingkaran
+        const progressOptions = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'right',
+                }
+            }
+        };
+
+        // Membuat diagram lingkaran progres pembelajaran
+        const ctx1 = document.getElementById('learningProgress').getContext('2d');
+        new Chart(ctx1, {
+            type: 'doughnut',
+            data: progressData,
+            options: progressOptions
+        });
+
+        // Data untuk grafik pengunjung dan komentar
+        const visitorsCommentsData = {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [
+                {
+                    label: 'Pengunjung',
+                    data: [100, 120, 150, 200, 300, 250, 400, 350, 450, 500, 600, 650],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Komentar',
+                    data: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }
+            ]
+        };
+
+        // Opsi untuk grafik pengunjung dan komentar
+        const visitorsCommentsOptions = {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+
+        // Membuat grafik pengunjung dan komentar
+        const ctx2 = document.getElementById('visitorsComments').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: visitorsCommentsData,
+            options: visitorsCommentsOptions
+        });
+
+        // Kolom komentar
+        const commentForm = document.getElementById('commentForm');
+        const commentInput = document.getElementById('commentInput');
+        const commentsDisplay = document.getElementById('commentsDisplay');
+
+        commentForm.addEventListener('submit', function (event) {
+            event.preventDefault(); // Mencegah reload halaman setelah submit
+            const commentText = commentInput.value;
+
+            if (commentText.trim() !== "") {
+                const commentDiv = document.createElement('div');
+                commentDiv.classList.add('comment');
+                commentDiv.textContent = commentText;
+
+                commentsDisplay.appendChild(commentDiv);
+                commentInput.value = ''; // Kosongkan textarea setelah submit
+            }
+        });
+    </script>
+</body>
+
+</html>
