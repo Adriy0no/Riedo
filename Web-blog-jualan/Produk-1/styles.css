@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+h2 {
+    color: #333;
+}
+
+.artikel-gambar {
+    display: block;
+    /* Mengubah gambar menjadi block element */
+    margin: 15px auto;
+    /* Mengatur margin atas/bawah dan otomatis untuk sisi kiri/kanan */
+    width: 80%;
+    /* Mengatur lebar gambar agar responsif */
+    height: auto;
+    /* Mempertahankan aspek rasio gambar */
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
