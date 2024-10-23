@@ -1,0 +1,62 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('A-01.jpg');
+    /* Ganti dengan path gambarmu */
+    background-size: cover;
+    /* Agar gambar menutupi seluruh layar */
+    background-position: center;
+    /* Posisi gambar di tengah */
+    font-family: Arial, sans-serif;
+}
+
+.calculator {
+    width: 300px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.display {
+    width: 93.5%;
+    height: 40px;
+    background-color: #c2c2c2;
+    text-align: right;
+    padding: 10px;
+    font-size: 24px;
+    border: none;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+button {
+    width: 100%;
+    height: 60px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff8c2d;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ddd;
+}
+
+button.zero {
+    grid-column: span 2;
+}
+
+button:active {
+    background-color: #bbb;
+}
