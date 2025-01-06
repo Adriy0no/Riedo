@@ -255,10 +255,21 @@
             <div class="projects-heading padd-15">
               <h2>My Projects :</h2>
             </div>
+            <div class="row">
+              <div class="projects-heading padd-15">
+                <h2>--Kategori--</h2>
+              </div>
+              <!-- Filter Buttons -->
+              <div class="filter-buttons">
+                <button onclick="filterProjects('all')">All</button>
+                <button onclick="filterProjects('web')">Web</button>
+                <button onclick="filterProjects('game')">Game</button>
+                <button onclick="filterProjects('other')">Other</button>
+              </div>
           </div>
           <div class="row">
             <!-- Projects Item Start -->
-            <div class="projects-item padd-15">
+            <div class="projects-item padd-15" data-category="web">
               <div class="projects-item-inner shadow-dark">
                 <div class="projects-img" id="project1">
                   <img src="img/kalkulator.jpg" alt="projects1" />
@@ -287,7 +298,7 @@
             </div>
             <!-- Projects Item End -->
             <!-- Projects Item Start -->
-            <div class="projects-item padd-15">
+            <div class="projects-item padd-15" data-category="game">
               <div class="projects-item-inner shadow-dark">
                 <div class="projects-img" id="project1">
                   <img src="img/ulerpy.jpg" alt="projects1" />
@@ -315,7 +326,7 @@
             </div>
             <!-- Projects Item End -->
             <!-- Projects Item Start -->
-            <div class="projects-item padd-15">
+            <div class="projects-item padd-15" data-category="web">
               <div class="projects-item-inner shadow-dark">
                 <div class="projects-img" id="project1">
                   <img src="img/formlogin.jpg" alt="projects1" />
@@ -343,7 +354,7 @@
             </div>
             <!-- Projects Item End -->
             <!-- Projects Item Start -->
-            <div class="projects-item padd-15">
+            <div class="projects-item padd-15" data-category="web">
               <div class="projects-item-inner shadow-dark">
                 <div class="projects-img" id="project1">
                   <img src="img/Web-jualan.jpg" alt="projects1" />
@@ -371,7 +382,7 @@
             </div>
             <!-- Projects Item End -->
             <!-- Projects Item Start -->
-            <div class="projects-item padd-15">
+            <div class="projects-item padd-15" data-category="web">
               <div class="projects-item-inner shadow-dark">
                 <div class="projects-img" id="project1">
                   <img src="/diagran/diagram.png" alt="projects1" />
@@ -398,7 +409,7 @@
             </div>
             <!-- Projects Item End -->
             <!-- Projects Item Start -->
-            <div class="projects-item padd-15">
+            <div class="projects-item padd-15" data-category="web">
               <div class="projects-item-inner shadow-dark">
                 <div class="projects-img" id="project1">
                   <img src="img/web company profil.png" alt="projects1" />
@@ -423,7 +434,7 @@
             </div>
             <!-- Projects Item End -->
             <!-- Projects Item Start -->
-            <div class="projects-item padd-15">
+            <div class="projects-item padd-15" data-category="web">
               <div class="projects-item-inner shadow-dark">
                 <div class="projects-img" id="project1">
                   <img src="img/dashbot.jpg" alt="projects1" />
@@ -554,6 +565,7 @@
     integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="js/script.js"></script>
+  <script src="js/filter.js"></script>
   <script src="js/style-switcher.js"></script>
 </body>
 
